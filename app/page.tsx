@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { env } from 'process';
 
 export default function Home() {
 
