@@ -8,7 +8,7 @@ expand(config());
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "production"]).default("development"),
-    NEXTAUTH_URL: z.string().url(),
+    // NEXTAUTH_URL: z.string().url(),
     NEXTAUTH_SECRET: z.string(),
   },
   onValidationError: (error) => {

@@ -1,9 +1,12 @@
-import { DefaultSession } from "next-auth";
+import { IUser } from "@my-monorepo/shared-types";
+import "next-auth";
 
 declare module "next-auth" {
   interface Session {
-    user: {
-      id: string;
-    } & DefaultSession["user"];
+    tokens: {
+      accessToken: string;
+      refreshToken: string;
+    };
+    user: IUser;
   }
 }

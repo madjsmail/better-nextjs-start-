@@ -9,16 +9,8 @@
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "workbench.editor.customLabels.patterns": {
-    // root files
-    "**/app/*.tsx": "${filename}.${extname} (root)",
-      
-    // distinguish route handlers and api specific route handlers
-    "**/app/api/**/route.ts": "${dirname(1)}/${dirname} ∙ api",
-      
-    // distinguish different parts of an app
-    "**/app/(content)/**/*": "🌍 ${dirname}/${filename}.${extname}",
-    "**/app/(content)/**/{*.tsx,route.ts}": "🌍 ${dirname(1)}/${dirname} ∙ ${filename}",
-    "**/app/dashboard/**/*": "🚧 ${dirname}/${filename}.${extname}",
-    "**/app/dashboard/**/{*.tsx,route.ts,actions.ts}": "🚧 ${dirname(1)}/${dirname} ∙ ${filename}"
-  }
+    "**/*/**/page.tsx": "${dirname} - Page",
+    "**/app/**/layout.tsx": "${dirname} - Layout",
+    "**/component/**/index.tsx": "${dirname} - Component"
+  },
 }
