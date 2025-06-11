@@ -132,12 +132,6 @@
 }
 
 @layer utilities {
-  .container {
-    margin-inline: auto;
-  }
-}
-
-@layer utilities {
   @keyframes shine {
     0% {
       background-position: 100%;
@@ -148,5 +142,15 @@
   }
   .animate-shine {
     animation: shine 5s linear infinite;
+  }
+}
+@layer utilities {
+  .bg-calendar-disabled-hour {
+    /* background-color: rgb(173, 125, 125); */
+    background: repeating-linear-gradient(
+      -60deg,
+      hsl(var(--border)) 0 0.5px,
+      transparent 0.5px 8px
+    );
   }
 }

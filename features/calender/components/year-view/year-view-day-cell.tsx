@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 
 
 import { cn } from "@/lib/utils";
-import { IEvent } from "../../interfaces";
 import { useCalendar } from "../../contexts/calendar-context";
+import { IEvent } from "../../interfaces";
 
 
 
@@ -24,7 +24,7 @@ export function YearViewDayCell({ day, date, events }: IProps) {
 
   const handleClick = () => {
     setSelectedDate(date);
-    push("/day-view");
+    push("/calander/day-view");
   };
 
   return (

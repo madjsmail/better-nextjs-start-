@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { addDays, areIntervalsOverlapping, format, isSameDay, parseISO, startOfWeek } from "date-fns";
 import { useCalendar } from "../../contexts/calendar-context";
-import { getEventBlockStyle, getVisibleHours, groupEvents, isWorkingHour } from "../../helpers";
+import { getEventBlockStyle, getVisibleHours, groupEvents, isWorking, isWorkingHour } from "../../helpers";
 import { IEvent } from "../../interfaces";
 import { AddEventDialog } from "../dialogs/add-event-dialog";
 import { DroppableTimeBlock } from "../dnd/droppable-time-block";
@@ -16,6 +16,7 @@ interface IProps {
   singleDayEvents: IEvent[];
   multiDayEvents: IEvent[];
 }
+const desabledslot = 'pointer-events-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-300 [&_.event-dot]:fill-blue-600'
 
 export function CalendarWeekView({ singleDayEvents, multiDayEvents }: IProps) {
   const { selectedDate, workingHours, visibleHours } = useCalendar();
@@ -49,7 +50,7 @@ export function CalendarWeekView({ singleDayEvents, multiDayEvents }: IProps) {
           </div>
         </div>
 
-        <ScrollArea className="h-[736px]" type="always">
+        <ScrollArea className="h-[1000px]" type="always">
           <div className="flex overflow-hidden">
             {/* Hours column */}
             <div className="relative w-18">
@@ -72,10 +73,20 @@ export function CalendarWeekView({ singleDayEvents, multiDayEvents }: IProps) {
                   return (
                     <div key={dayIndex} className="relative">
                       {hours.map((hour, index) => {
-                        const isDisabled = !isWorkingHour(day, hour, workingHours);
+                        const startRange = new Date('2025-06-09T00:00:00Z'); // June 9, 2025
+                        const endRange = new Date('2025-06-13T23:59:59Z'); // June 13, 2025
+                        const t = isWorking(day, startRange, endRange)
+                        /**
+                         * isworkinghoure true 
+                         *  
+                         * 
+                         */
+                        const isDisabled = !isWorkingHour(day, hour, workingHours) || t
+
+
 
                         return (
-                          <div key={hour} className={cn("relative", isDisabled && "bg-calendar-disabled-hour")} style={{ height: "96px" }}>
+                          <div key={hour} className={cn("relative", isDisabled && desabledslot)} style={{ height: "96px" }}>
                             {index !== 0 && <div className="pointer-events-none absolute inset-x-0 top-0 border-b "></div>}
 
                             <DroppableTimeBlock date={day} hour={hour} minute={0}>

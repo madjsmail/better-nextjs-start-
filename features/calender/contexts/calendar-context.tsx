@@ -3,8 +3,9 @@
 import { createContext, useContext, useState } from "react";
 
 import type { Dispatch, SetStateAction } from "react";
-import type { IEvent, IUser } from "@/calendar/interfaces";
-import type { TBadgeVariant, TVisibleHours, TWorkingHours } from "@/calendar/types";
+import { IEvent, IUser } from "../interfaces";
+import { TBadgeVariant, TVisibleHours, TWorkingHours } from "../types";
+
 
 interface ICalendarContext {
   selectedDate: Date;

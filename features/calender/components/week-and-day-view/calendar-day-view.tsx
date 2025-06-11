@@ -19,6 +19,8 @@ interface IProps {
   multiDayEvents: IEvent[];
 }
 
+const desabledslot = 'pointer-events-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-300 [&_.event-dot]:fill-blue-600'
+
 export function CalendarDayView({ singleDayEvents, multiDayEvents }: IProps) {
   const { selectedDate, setSelectedDate, users, visibleHours, workingHours } = useCalendar();
 
@@ -72,7 +74,7 @@ export function CalendarDayView({ singleDayEvents, multiDayEvents }: IProps) {
                   const isDisabled = !isWorkingHour(selectedDate, hour, workingHours);
 
                   return (
-                    <div key={hour} className={cn("relative", isDisabled && "bg-calendar-disabled-hour")} style={{ height: "96px" }}>
+                    <div key={hour} className={cn("relative", isDisabled && desabledslot)} style={{ height: "96px" }}>
                       {index !== 0 && <div className="pointer-events-none absolute inset-x-0 top-0 border-b"></div>}
 
                       <DroppableTimeBlock date={selectedDate} hour={hour} minute={0}>

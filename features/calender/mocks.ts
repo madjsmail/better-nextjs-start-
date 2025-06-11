@@ -1,8 +1,12 @@
-import type { TEventColor } from "@/calendar/types";
-import type { IEvent, IUser } from "@/calendar/interfaces";
+
 
 // ================================== //
 
+import { IEvent, IUser } from "./interfaces";
+import { TEventColor } from "./types";
+/**
+ * TODO update the interface
+ */
 export const USERS_MOCK: IUser[] = [
   {
     id: "dd503cf9-6c38-43cf-94cc-0d4032e2f77a",
