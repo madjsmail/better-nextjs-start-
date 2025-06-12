@@ -16,7 +16,7 @@ interface IProps {
   singleDayEvents: IEvent[];
   multiDayEvents: IEvent[];
 }
-const desabledslot = 'pointer-events-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-300 [&_.event-dot]:fill-blue-600'
+const desabledslot = 'pointer-events-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border-gray-200 bg-gray-50 text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300 [&_.event-dot]:fill-gray-600'
 
 export function CalendarWeekView({ singleDayEvents, multiDayEvents }: IProps) {
   const { selectedDate, workingHours, visibleHours } = useCalendar();
@@ -73,17 +73,18 @@ export function CalendarWeekView({ singleDayEvents, multiDayEvents }: IProps) {
                   return (
                     <div key={dayIndex} className="relative">
                       {hours.map((hour, index) => {
-                        const startRange = new Date('2025-06-09T00:00:00Z'); // June 9, 2025
-                        const endRange = new Date('2025-06-13T23:59:59Z'); // June 13, 2025
+                        const startRange = new Date('2025-06-12T00:00:00Z'); // June 9, 2025
+                        const endRange = new Date('2025-06-19T23:59:59Z'); // June 13, 2025
                         const t = isWorking(day, startRange, endRange)
-                        /**
-                         * isworkinghoure true 
-                         *  
-                         * 
-                         */
+
                         const isDisabled = !isWorkingHour(day, hour, workingHours) || t
 
-
+                        /**
+                         * 
+                         * TODO : make the height a variable 
+                         * TODO : adjust the  DroppableTimeBlock hight and margin 
+                         * 
+                         */
 
                         return (
                           <div key={hour} className={cn("relative", isDisabled && desabledslot)} style={{ height: "96px" }}>

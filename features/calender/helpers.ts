@@ -179,7 +179,7 @@ export function isWorkingHour(
 /**
  * check is the doctor is working or not that day
  * @param day
- * @param dayFrom
+ * @param dayFrom 
  * @param dayTo
  */
 export function isWorking(day: Date, dayFrom: Date, dayTo: Date) {
