@@ -3,10 +3,10 @@ export const AppConfig = {
 };
 
 export const ApiRoutes = {
-  login: `${AppConfig.apiBaseUrl}/auth/login`,
-  doctor: `${AppConfig.apiBaseUrl}/doctor`,
-  user: `${AppConfig.apiBaseUrl}/user`,
-  review: `${AppConfig.apiBaseUrl}/review`,
+  login: `/auth/login`,
+  doctor: `/doctor`,
+  user: `/user`,
+  review: `/review`,
 
   specializationUsers: (userId: string) =>
     `${AppConfig.apiBaseUrl}/specialization/${userId}/users`,

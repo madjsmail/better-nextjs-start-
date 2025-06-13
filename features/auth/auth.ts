@@ -3,6 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 
 import { ApiRoutes } from "@/config/config";
 import { env } from "@/config/env/env";
+import { customFetch } from "@/lib/top-layer-api";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   cookies: {},
@@ -14,22 +15,35 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       async authorize(credentials, req) {
-        const res = await fetch(ApiRoutes.login, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
+        // const res = await fetch(ApiRoutes.login, {
+
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({
+        //     email: credentials?.email,
+        //     password: credentials?.password,
+        //   }),
+        // });
+
+        // if (!res.ok) {
+        //   let result = await res.json();
+        //   return null;
+        // }
+        // return res.json();
+        const res = await customFetch.POST(ApiRoutes.login, {
+          body: {
             email: credentials?.email,
             password: credentials?.password,
-          }),
+          },
         });
+        console.log({res});
 
-        if (!res.ok) {
-          let result = await res.json();
+        if (res.error) {
           return null;
         }
-        return res.json();
+        return res.data;
       },
     }),
   ],
@@ -49,6 +63,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     authorized: async ({ auth }) => {
       return !!auth;
     },
+
     // async signIn({ user, account, profile, email, credentials }) {
 
     //   if (user?.error === "my custom error") {

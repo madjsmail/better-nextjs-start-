@@ -1,5 +1,6 @@
 'use client'
 
+import { ModeToggle } from '@/components/theme-switch'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { Menu, X } from 'lucide-react'
@@ -83,6 +84,7 @@ export const LandingHeader = () => {
                                     ))}
                                 </ul>
                             </div>
+                            <ModeToggle />
                             {status == 'authenticated' && <LoginAvatar />}
                             {status == 'loading' && <div className="w-10 h-10 border-4 border-primary rounded-full animate-spin border-t-transparent"></div>}
                             {status == 'unauthenticated' && <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
