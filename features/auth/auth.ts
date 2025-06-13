@@ -49,6 +49,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     authorized: async ({ auth }) => {
       return !!auth;
     },
+    
     // async signIn({ user, account, profile, email, credentials }) {
 
     //   if (user?.error === "my custom error") {

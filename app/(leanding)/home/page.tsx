@@ -1,6 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
     Activity,
     ArrowRight,
@@ -10,12 +8,12 @@ import {
     Eye,
     Heart,
     Microscope,
-    Search,
     Stethoscope,
     SmileIcon as Tooth,
     UserCheck
 } from "lucide-react";
 import Link from "next/link";
+import { DoctoFreeSearch } from "./hero-section";
 export default function Page() {
     const specialties = [
         { name: "General Practitioner", icon: Stethoscope },
@@ -63,76 +61,11 @@ export default function Page() {
         <div className="flex min-h-screen flex-col ">
 
             <main className="flex-1">
-                <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-paypal-medium-blue to-paypal-medium-blue/70 text-white">
-                    <div className="container px-4 md:px-6">
-                        <div className="flex flex-col items-center space-y-4 text-center">
-                            <div className="space-y-2">
-                                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                                    Find the right healthcare professional
-                                </h1>
-                                <p className="mx-auto max-w-[700px] text-white/90 md:text-xl">
-                                    Book appointments with doctors, dentists, and other healthcare professionals in your area.
-                                </p>
-                            </div>
-                            <div className="w-full max-w-md space-y-2">
-                                <Tabs defaultValue="doctor" className="w-full">
-                                    <TabsList className="grid w-full grid-cols-2 bg-white/20">
-                                        <TabsTrigger value="doctor" className="data-[state=active]:text-paypal-medium-blue">
-                                            Find a doctor
-                                        </TabsTrigger>
-                                        <TabsTrigger value="appointment" className="data-[state=active]:text-paypal-medium-blue">
-                                            My appointments
-                                        </TabsTrigger>
-                                    </TabsList>
-                                    <TabsContent value="doctor" className="space-y-4">
-                                        <div className="relative">
-                                            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                                            <Input
-                                                type="search"
-                                                placeholder="Specialty, doctor, practice..."
-                                                className="w-full bg-white pl-8 pr-20 rounded-xl"
-                                            />
-                                            <Button
-                                                className="absolute right-1 top-1 h-8 bg-paypal-yellow text-paypal-gray hover:bg-paypal-yellow/90 rounded-lg"
-                                                size="sm"
-                                            >
-                                                Search
-                                            </Button>
-                                        </div>
-                                        <div className="relative">
-                                            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                                            <Input type="search" placeholder="Location" className="w-full bg-white pl-8 pr-20 rounded-xl" />
-                                            <Button
-                                                className="absolute right-1 top-1 h-8 bg-paypal-yellow text-paypal-gray hover:bg-paypal-yellow/90 rounded-lg"
-                                                size="sm"
-                                            >
-                                                Near me
-                                            </Button>
-                                        </div>
-                                        <Button
-                                            className="w-full bg-paypal-yellow text-paypal-gray hover:bg-paypal-yellow/90 rounded-xl h-12 font-medium"
-                                            size="lg"
-                                        >
-                                            Find a doctor
-                                        </Button>
-                                    </TabsContent>
-                                    <TabsContent value="appointment" className="space-y-4">
-                                        <div className="flex flex-col space-y-2 text-center">
-                                            <h3 className="text-lg font-medium">Access your appointments</h3>
-                                            <p className="text-sm text-white/90">Log in to view, reschedule, or cancel your appointments.</p>
-                                            <Button
-                                                asChild
-                                                className="bg-white text-paypal-medium-blue hover:bg-white/90 rounded-xl h-12 font-medium"
-                                            >
-                                                <Link href="/patients/login">Log in</Link>
-                                            </Button>
-                                        </div>
-                                    </TabsContent>
-                                </Tabs>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
+                <DoctoFreeSearch />
+
+
+
                 <section className="w-full py-12 md:py-24 lg:py-32">
                     <div className="container px-4 md:px-6">
                         <div className="flex flex-col items-center justify-center space-y-4 text-center">
